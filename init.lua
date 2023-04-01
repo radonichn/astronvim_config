@@ -18,7 +18,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  colorscheme = "cappuccin",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -68,6 +68,14 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      pattern = { '*.tsx', '*.ts', '*.jsx', '*.js', '*.vue' },
+      command = 'silent! EslintFixAll',
+      group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+    })
+    vim.api.nvim_create_autocmd('VimEnter', {
+      command = 'Neotree show right'
+    })
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
