@@ -7,6 +7,13 @@ return {
     end,
   },
   {
+    "EdenEast/nightfox.nvim",
+    as = "nightfox",
+    config = function()
+      require("nightfox").setup {}
+    end,
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     config = true,
     opts = {
